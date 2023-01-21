@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
 import patientRoutes from './routes/patients.js';
 import doctorRoutes from './routes/doctors.js';
 
+dotenv.config();
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 
