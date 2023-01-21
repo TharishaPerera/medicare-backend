@@ -1,3 +1,5 @@
+import { getUsers } from "../services/patientService.js";
+
 /***
  * get one patient by id
  */
