@@ -1,10 +1,15 @@
-import { getUsers } from "../services/patientService.js";
+import { getOnePatientById } from "../services/patientService.js";
 
 /***
  * get one patient by id
  */
 export const getOnePatient = (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
+    const result = getOnePatientById(id);
+    
+    result.then((patient) => {
+        res.send(patient);
+    });
 }
 
 /***

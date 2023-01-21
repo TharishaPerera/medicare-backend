@@ -1,6 +1,8 @@
 import { pool } from "../database.js";
 
-export async function getUsers(){
-    const [result] = await pool.query("SELECT * FROM users");
-    console.log(result);
+export async function getOnePatientById(id){
+    const query = `SELECT * FROM users WHERE id=${id}`;
+    const [result] = await pool.query(query);
+
+    return result;
 }
