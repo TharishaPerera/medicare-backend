@@ -1,4 +1,4 @@
-import { getOnePatientById } from "../services/patientService.js";
+import { getOnePatientById, createNewPatient } from "../services/patientService.js";
 
 /***
  * get one patient by id
@@ -17,9 +17,16 @@ export const getOnePatient = (req, res) => {
  */
 export const createPatient =  (req, res) => {
     const patient = req.body;
-    patients.push(patient);
+    const newPatient = createNewPatient(patient);
 
-    res.send(`Patient with the name '${patient.firstName}' is created.`);
+    newPatient.then((result) => {
+        if(result == 'success'){
+            res.send(`Patient with the name '${patient.first_name}' is created.`);
+        }
+        if(result == 'email exists'){
+            res.send(`Email with the value of '${patient.email}' is already exists.`);
+        }
+    });
 }
 
 /***

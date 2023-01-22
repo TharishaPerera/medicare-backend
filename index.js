@@ -15,7 +15,7 @@ app.use('/patients', patientRoutes);
 app.use('/doctors', doctorRoutes);
 
 app.get('/', (req, res) => {
-    res.send('API Backend for MediCare Android Aplication using NodeJS!');
+    res.send('API Backend for MediCare Android Application using NodeJS!');
 });
 
 app.listen(PORT, () => console.log(`Server running on: http://localhost:${PORT}`));

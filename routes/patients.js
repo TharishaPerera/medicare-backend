@@ -3,7 +3,7 @@ import { createPatient, getOnePatient, updatePatient, deletePatient } from '../c
 
 const router = express.Router();
 
-// get all patients
+// base endpoint for patients
 router.get('/', (req, res) => {
     res.send('Patients Endpoints!');
 });
