@@ -1,4 +1,12 @@
-import { getOnePatientById, createNewPatient } from "../services/patientService.js";
+import { getAllPatients, getOnePatientById, createNewPatient } from "../services/patientService.js";
+
+export const getAllPatient = (req, res) => {
+    const result = getAllPatients();
+
+    result.then((patients) => {
+        res.send(patients);
+    });
+}
 
 /***
  * get one patient by id
