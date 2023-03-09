@@ -1,6 +1,7 @@
 import { pool } from "../database.js";
 
 export async function getAllPatients(){
+    return "Patients Endpoint";
     const query = "SELECT * FROM users";
     const [result] = await pool.query(query);
 
