@@ -1,8 +1,7 @@
 import { pool } from "../database.js";
 
 export async function getAllPatients(){
-    return "Patients Endpoint";
-    const query = "SELECT * FROM users";
+    const query = "SELECT * FROM patient";
     const [result] = await pool.query(query);
 
     return result;
@@ -16,16 +15,17 @@ export async function getOnePatientById(id){
 }
 
 export async function createNewPatient(data){
-    // check whether the email exists
-    const queryEmail = `SELECT id FROM users WHERE email='${data.email}'`;
-    const [result] = await pool.query(queryEmail);
+    console.log(data)
+    // check whether the phone exists
+    const queryPhone = `SELECT id FROM patient WHERE telephone='${data.telephone}'`;
+    const [result] = await pool.query(queryPhone);
 
-    // if not create a new user
+    // if not create a new patient
     if(result.length == 0){
-        const query = `INSERT INTO users (first_name, last_name, email, password, telephone, address, role, date_of_birth) VALUES ('${data.first_name}', '${data.last_name}', '${data.email}', '${data.password}', ${data.telephone}, '${data.address}', '${data.role}', '${data.date_of_birth}')`;
+        const query = `INSERT INTO patient (first_name, last_name, telephone, date_of_birth, gender, blood_type) VALUES ('${data.first_name}', '${data.last_name}', '${data.telephone}', '${data.date_of_birth}', '${data.gender}', '${data.blood_type}')`;
         const result = await pool.query(query);
         return 'success';
     } else {
-        return 'email exists';
+        return 'telephone exists';
     }
 }

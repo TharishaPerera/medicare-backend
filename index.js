@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 import patientRoutes from './routes/patients.js';
 import doctorRoutes from './routes/doctors.js';
+import categoryRoutes from './routes/category.js';
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 
 app.use('/patients', patientRoutes);
 app.use('/doctors', doctorRoutes);
+app.use('/categories',categoryRoutes);
 
 app.get('/', (req, res) => {
     res.send('API Backend for MediCare Android Application using NodeJS!');

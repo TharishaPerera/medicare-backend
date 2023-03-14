@@ -25,14 +25,15 @@ export const getOnePatient = (req, res) => {
  */
 export const createPatient =  (req, res) => {
     const patient = req.body;
+    console.log(patient);
     const newPatient = createNewPatient(patient);
 
     newPatient.then((result) => {
         if(result == 'success'){
             res.send(`Patient with the name '${patient.first_name}' is created.`);
         }
-        if(result == 'email exists'){
-            res.send(`Email with the value of '${patient.email}' is already exists.`);
+        if(result == 'telephone exists'){
+            res.send(`Telephone number with the value of '${patient.telephone}' is already exists.`);
         }
     });
 }
